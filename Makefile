@@ -15,7 +15,7 @@ build:
 	go build -o bin/virtctl-test main.go
 
 test:
-	ginkgo cmd
+	go test ./...
 
 fio-image:
 	$(CONTAINER_RUNTIME) build -t $(FIO_IMAGE) tests-setup
