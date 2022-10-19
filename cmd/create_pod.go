@@ -96,12 +96,14 @@ func (c *createPodCommand) run(cmd *cobra.Command, args []string) error {
 			Volumes:       volumes,
 			Containers: []k8scorev1.Container{
 				{
-					Name:       podName,
-					Image:      image,
-					Command:    []string{"/fio.sh"},
-					WorkingDir: OutputDir,
-					Stdin:      true,
-					TTY:        true,
+					Name:  podName,
+					Image: image,
+					// TODO: afrosi configure pull policy
+					ImagePullPolicy: k8scorev1.PullIfNotPresent,
+					Command:         []string{"/fio.sh"},
+					WorkingDir:      OutputDir,
+					Stdin:           true,
+					TTY:             true,
 					Resources: k8scorev1.ResourceRequirements{
 						Requests: resources,
 					},
