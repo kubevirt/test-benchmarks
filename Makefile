@@ -1,6 +1,6 @@
 CONTAINER_RUNTIME ?= podman
 FIO_IMAGE_NAME ?= fio
-REGISTRY ?= quay.io/afrosi_rh
+REGISTRY ?= quay.io/kubevirtci
 DEVICE_IN_CONTAINER ?= device-to-test
 TIME_RUNNING_TEST ?= 300
 TEST_FLAVOR ?= write,read,randread,randwrite
