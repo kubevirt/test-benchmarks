@@ -18,8 +18,8 @@ import (
 )
 
 const (
-	DefaultWorkloadImage = "quay.io/afrosi_rh/fio:latest"
-	DefaultVMImage       = "quay.io/afrosi_rh/fedora-podman-cd:latest"
+	DefaultWorkloadImage = "quay.io/kubevirtci/fio:latest"
+	DefaultVMImage       = "quay.io/kubevirtci/fedora-podman-cd:latest"
 	FioContainerName     = "fio"
 	defaultNodePort      = 32756
 )
