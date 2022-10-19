@@ -210,7 +210,8 @@ poweroff -p
 		Name: "disk0",
 		VolumeSource: kubevirtcorev1.VolumeSource{
 			ContainerDisk: &kubevirtcorev1.ContainerDiskSource{
-				Image: imageVM,
+				Image:           imageVM,
+				ImagePullPolicy: k8scorev1.PullIfNotPresent,
 			},
 		},
 	})
