@@ -231,6 +231,22 @@ sudo loginctl enable-linger root
 	requests := map[k8scorev1.ResourceName]resource.Quantity{
 		k8scorev1.ResourceMemory: resource.MustParse("1G"),
 	}
+	networks := []kubevirtcorev1.Network{
+		{
+			Name: "default",
+			NetworkSource: kubevirtcorev1.NetworkSource{
+				Pod: &kubevirtcorev1.PodNetwork{},
+			},
+		},
+	}
+	interfaces := []kubevirtcorev1.Interface{
+		{
+			Name: "default",
+			InterfaceBindingMethod: kubevirtcorev1.InterfaceBindingMethod{
+				Masquerade: &kubevirtcorev1.InterfaceMasquerade{},
+			},
+		},
+	}
 	// Create VMI
 	vmi := &kubevirtcorev1.VirtualMachineInstance{
 		ObjectMeta: k8smetav1.ObjectMeta{
@@ -247,12 +263,14 @@ sudo loginctl enable-linger root
 							Virtiofs: &kubevirtcorev1.FilesystemVirtiofs{},
 						},
 					},
+					Interfaces: interfaces,
 				},
 				Resources: kubevirtcorev1.ResourceRequirements{
 					Requests: requests,
 				},
 			},
 			Volumes: volumes,
+			Networks: networks,
 		},
 	}
 	if SSHKeyPath != "" {
