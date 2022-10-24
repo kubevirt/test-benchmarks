@@ -178,8 +178,7 @@ mkdir -p %s
 mount -t virtiofs %s %s
 device=$(ls /sys/bus/pci/devices/%s/virtio*/block/)
 [ -z "$device" ] && false
-podman run --security-opt label=disable --net=host -d -v %s:/output --name %s --privileged -w /output --tls-verify=false -v /dev/"$device":/dev/device-to-test %s
-while [ ! -f /output/done ]; do sleep 5; done
+podman run --security-opt label=disable --net=host -ti -v %s:/output --name %s --privileged -w /output --tls-verify=false -v /dev/"$device":/dev/device-to-test %s
 poweroff -p
 `,
 		OutputDir,
