@@ -1,3 +1,5 @@
+**⚠️ This repository is deprecated and no longer maintained.**
+
 # Run benchmark tests in containers and VMs in Kubernetes
 
 This repository aims to collect best practise for running reproducible tests in containers and [KubeVirt](https://kubevirt.io/) VMs in Kubernetes. Currently, it focuses on running storage benchmarks using [fio](https://fio.readthedocs.io/en/latest/index.html).
